@@ -6,10 +6,6 @@ on:
   pull_request:
     branches: [ "master" ]
 
-definitions:
-  services:
-    docker:
-      image: docker:dind
 jobs:
   build:
 
@@ -29,6 +25,9 @@ jobs:
       run: sudo kill -9 `sudo lsof -t -i:8080` & sudo java -jar /home/ubuntu/actions-runner/_work/aws-deployment-with-ubuntu/aws-deployment-with-ubuntu/target/aws-dep-test.jar &
 
     - name: Build & push Docker image
+      services:
+        docker:
+          image: docker:dind
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
         image: asadaaron/aws_jenkins_docker
