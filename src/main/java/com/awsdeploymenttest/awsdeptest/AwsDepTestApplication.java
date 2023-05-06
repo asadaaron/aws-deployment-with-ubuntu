@@ -8,6 +8,7 @@ public class AwsDepTestApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(AwsDepTestApplication.class, args);
+
     }
 
 }
