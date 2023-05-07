@@ -34,7 +34,7 @@ jobs:
 
     - name: Execute Jar File
       #run: sudo kill -9 `sudo lsof -t -i:8080` & sudo java -jar /home/runner/.m2/repository/com/awsdeploymenttest/aws-dep-test/0.0.1-SNAPSHOT/aws-dep-test-0.0.1-SNAPSHOT.jar &
-      run: sudo kill -9 `sudo lsof -t -i:8080` & sudo java -jar /home/ubuntu/actions-runner/_work/aws-deployment-with-ubuntu/aws-deployment-with-ubuntu/target/aws-dep-test.jar &
+      run: sudo kill -9 `sudo lsof -t -i:8080` & sudo java -jar /home/ubuntu/actions-runner/_work/aws-deployment-with-ubuntu/aws-deployment-with-ubuntu/target/output/aws-dep-test.jar &
 
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
