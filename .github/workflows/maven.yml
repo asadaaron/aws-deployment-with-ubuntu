@@ -9,7 +9,7 @@ on:
 jobs:
   build:
 
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
@@ -24,19 +24,26 @@ jobs:
       run: mvn clean install
       #run: mvn clean -e install -Ddir=/home/runner/.m2/repository/com/awsdeploymenttest/aws-dep-test/0.0.1-SNAPSHOT/
 
-#    - name: Build & push Docker image
-#      uses: mr-smithers-excellent/docker-build-push@v5
-#      with:
-#        image: asadaaron/aws_jenkins_docker
-#        tags: latest
-#        registry: docker.io
-#        dockerfile: Dockerfile
-#        username: ${{ secrets.DOCKER_USERNAME }}
-#        password: ${{ secrets.DOCKER_PASSWORD }}
+    - name: Build & push Docker image
+      uses: mr-smithers-excellent/docker-build-push@v5
+      with:
+        image: asadaaron/aws-githubactions-docker
+        tags: latest
+        registry: docker.io
+        dockerfile: Dockerfile
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: Execute Jar File
+    - name: Docker Pull
+      run: sudo docker pull asadaaron/aws-githubactions-docker
+    - name: Stop Current Image
+      run: sudo docker stop asadaaron/aws-githubactions-docker:latest
+    - name: Run docker image in EC2
+      run: sudo docker run -d -p 8080:8080 asadaaron/aws-githubactions-docker:latest
+
+    #- name: Execute Jar File
       #run: sudo kill -9 `sudo lsof -t -i:8080` & sudo java -jar /home/runner/.m2/repository/com/awsdeploymenttest/aws-dep-test/0.0.1-SNAPSHOT/aws-dep-test-0.0.1-SNAPSHOT.jar  &
-      run: sudo kill -9 `sudo lsof -t -i:8080` & sudo java -jar /home/ubuntu/actions-runner/_work/aws-deployment-with-ubuntu/aws-deployment-with-ubuntu/target/aws-dep-test.jar &
+    #  run: sudo kill -9 `sudo lsof -t -i:8080` & sudo java -jar /home/ubuntu/actions-runner/_work/aws-deployment-with-ubuntu/aws-deployment-with-ubuntu/target/aws-dep-test.jar &
 
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
