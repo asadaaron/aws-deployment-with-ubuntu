@@ -11,7 +11,7 @@ public class controller implements ErrorController {
 
     @RequestMapping(value = PATH)
     public String error() {
-        return "You are misguiding me.";
+        return "You are misguiding me my son";
     }
 
 }
