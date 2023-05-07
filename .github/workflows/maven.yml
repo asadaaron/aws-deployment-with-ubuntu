@@ -23,15 +23,15 @@ jobs:
       run: mvn -B package --file pom.xml
       #run: mvn clean -e install -Ddir=/home/runner/.m2/repository/com/awsdeploymenttest/aws-dep-test/0.0.1-SNAPSHOT/
 
-    - name: Build & push Docker image
-      uses: mr-smithers-excellent/docker-build-push@v5
-      with:
-        image: asadaaron/aws_jenkins_docker
-        tags: latest
-        registry: docker.io
-        dockerfile: Dockerfile
-        username: ${{ secrets.DOCKER_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+#    - name: Build & push Docker image
+#      uses: mr-smithers-excellent/docker-build-push@v5
+#      with:
+#        image: asadaaron/aws_jenkins_docker
+#        tags: latest
+#        registry: docker.io
+#        dockerfile: Dockerfile
+#        username: ${{ secrets.DOCKER_USERNAME }}
+#        password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Execute Jar File
       #run: sudo kill -9 `sudo lsof -t -i:8080` & sudo java -jar /home/runner/.m2/repository/com/awsdeploymenttest/aws-dep-test/0.0.1-SNAPSHOT/aws-dep-test-0.0.1-SNAPSHOT.jar  &
