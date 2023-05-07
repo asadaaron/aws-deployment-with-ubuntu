@@ -20,7 +20,8 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      #run: mvn -B package --file pom.xml
+      run: mvn clean install
       #run: mvn clean -e install -Ddir=/home/runner/.m2/repository/com/awsdeploymenttest/aws-dep-test/0.0.1-SNAPSHOT/
 
 #    - name: Build & push Docker image
