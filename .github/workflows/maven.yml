@@ -43,6 +43,9 @@ jobs:
     - name: Run docker image in EC2
       run: sudo docker run -d -p 8080:8080 asadaaron/aws-githubactions-docker:latest
 
+    - name: Run deployment information
+      run: sudo pwd
+
     #- name: Execute Jar File
       #run: sudo kill -9 `sudo lsof -t -i:8080` & sudo java -jar /home/runner/.m2/repository/com/awsdeploymenttest/aws-dep-test/0.0.1-SNAPSHOT/aws-dep-test-0.0.1-SNAPSHOT.jar  &
     #  run: sudo kill -9 `sudo lsof -t -i:8080` & sudo java -jar /home/ubuntu/actions-runner/_work/aws-deployment-with-ubuntu/aws-deployment-with-ubuntu/target/aws-dep-test.jar &
