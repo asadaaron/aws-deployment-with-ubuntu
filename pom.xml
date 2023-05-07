@@ -37,6 +37,7 @@
             </plugin>
         </plugins>
         <finalName>aws-dep-test</finalName>
+        <directory>${dir}</directory>
     </build>
 
 </project>
