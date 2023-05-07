@@ -37,7 +37,7 @@
             </plugin>
         </plugins>
         <finalName>aws-dep-test</finalName>
-        <!--<directory>${project.basedir}/target</directory>-->
+        <directory>${project.basedir}/target</directory>
     </build>
 
 </project>
